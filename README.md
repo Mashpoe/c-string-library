@@ -1,4 +1,4 @@
-# C-STRING-LIBRARY
+# C String Library
 A simple string that can be passed to most library functions, e.g. printf, and supports its own methods such as add, insert, replace, and remove.
 
 This string library is partially based on anitrez's [Simple Dynamic Strings](https://github.com/antirez/sds/), and like it, this library does not require a function call to access the string, e.g. STRING_GET_CONTENTS(s). Instead, it can be easily passed to many library functions such as printf:
