@@ -7,13 +7,13 @@ This string library is partially based on anitrez's [Simple Dynamic Strings](htt
 printf("%s\n", str);
 ```
 
-In most other libraries this will be something like:
+In most other libraries this, printing a string looks like this:
 
 ```c
 printf("%s\n", str->buf);
 ```
 
-Or:
+or
 
 ```c
 printf("%s\n", getStringPointer(str));
@@ -23,7 +23,7 @@ Similarly to SDS strings, this is achieved by using an alternative design, in wh
 
 
     +--------+-------------------------------+-----------+
-    | Header | Binary safe C alike string... | Null term |
+    | Header | Binary safe c-alike string... | Null term |
     +--------+-------------------------------+-----------+
              |
              `-> Pointer returned to the user.
@@ -70,7 +70,7 @@ This library has a few notable differences from the _Simple Dynamic Strings_ lib
 s = sdscat(s,"Some more data");
 ```
 
-In order to make these function calls look better, this library's function calls look like this:
+In order to make these function calls look better, this library's function calls work like this:
 
 ```c
 STRING_ADD(&s, "Some more data");
