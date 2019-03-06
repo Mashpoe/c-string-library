@@ -31,7 +31,7 @@ Similarly to SDS strings, this is achieved by using an alternative design, in wh
 
 # Usage
 
-This library's strings are the same type as a regular c string, `char*`, but this library defines `string` as an alias, which chould be used for every string associated with this library to avoid confusion.
+This library's strings are the same type as a regular c string, `char*`, but this library defines `string` as an alias, which should be used for every string associated with this library to avoid confusion.
 
 You can create a string by calling `STRING_CREATE` like so:
 
