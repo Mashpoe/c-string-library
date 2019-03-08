@@ -1,6 +1,5 @@
 //
 //  str.c
-//  CHeckScript
 //
 //  Created by Mashpoe on 2/28/19.
 //  Copyright © 2019 Mashpoe. All rights reserved.
