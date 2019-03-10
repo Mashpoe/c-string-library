@@ -20,11 +20,11 @@ void STRING_ADD_CHAR(string* s, char c);
 
 void STRING_ADD(string* s, const char* str);
 
-void STRING_INSERT(string* s, size_t pos, const char* str);
+void STRING_INSERT(string* s, str_size pos, const char* str);
 
-void STRING_REPLACE(string* s, size_t pos, size_t len, const char* str);
+void STRING_REPLACE(string* s, str_size pos, str_size len, const char* str);
 
-void STRING_REMOVE(string s, size_t pos, size_t len); // removing elements does not require reallocation
+void STRING_REMOVE(string s, str_size pos, str_size len); // removing elements does not require reallocation
 
 void STRING_FREE(string s);
 
