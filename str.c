@@ -12,12 +12,12 @@
 typedef struct string_data string_data;
 
 struct string_data {
-	size_t alloc; // stores the number of bytes allocated
-	size_t length;
+	str_size alloc; // stores the number of bytes allocated
+	str_size length;
 	char buff[];
 };
 
-string_data* STRING_ALLOC(size_t length) {
+string_data* STRING_ALLOC(str_size length) {
 	string_data* s_data = malloc(sizeof(string_data) + length + 1); // plus 1 for null terminator
 	s_data->alloc = length+1;
 	s_data->length = length;
@@ -32,7 +32,7 @@ string STRING_CREATE(const char* str) {
 	string_data* s_data = NULL;
 	
 	if (str != NULL) {
-		size_t str_length = strlen(str);
+		str_size str_length = strlen(str);
 		s_data = STRING_ALLOC(str_length);
 		memcpy(&s_data->buff, str, str_length);
 		s_data->buff[str_length] = '\0';
@@ -45,7 +45,7 @@ string STRING_CREATE(const char* str) {
 }
 
 string_data* STRING_REALLOC(string_data* s_data) {
-	size_t new_alloc = s_data->alloc * 2;
+	str_size new_alloc = s_data->alloc * 2;
 	
 	string_data* new_s_data = malloc(sizeof(string_data) + new_alloc);
 	
@@ -79,9 +79,9 @@ void STRING_ADD_CHAR(string* s, char c) {
 void STRING_ADD(string* s, const char* str) {
 	string_data* s_data = STRING_DATA(*s);
 	
-	size_t str_length = strlen(str);
+	str_size str_length = strlen(str);
 	
-	size_t new_length = s_data->length + str_length;
+	str_size new_length = s_data->length + str_length;
 	
 	// make sure there is enough room for new characters and null terminator
 	if (s_data->alloc <= new_length + 1) {
@@ -102,12 +102,12 @@ void STRING_ADD(string* s, const char* str) {
 	*s = s_data->buff;
 }
 
-void STRING_INSERT(string* s, size_t pos, const char* str) {
+void STRING_INSERT(string* s, str_size pos, const char* str) {
 	string_data* s_data = STRING_DATA(*s);
 	
-	size_t str_length = strlen(str);
+	str_size str_length = strlen(str);
 	
-	size_t new_length = s_data->length + str_length;
+	str_size new_length = s_data->length + str_length;
 	
 	// make sure there is enough room for new characters and null terminator
 	if (s_data->alloc <= new_length + 1) {
@@ -133,12 +133,12 @@ void STRING_INSERT(string* s, size_t pos, const char* str) {
 	*s = s_data->buff;
 }
 
-void STRING_REPLACE(string* s, size_t pos, size_t len, const char* str) {
+void STRING_REPLACE(string* s, str_size pos, str_size len, const char* str) {
 	string_data* s_data = STRING_DATA(*s);
 	
-	size_t str_length = strlen(str);
+	str_size str_length = strlen(str);
 	
-	size_t new_length = s_data->length + str_length - len;
+	str_size new_length = s_data->length + str_length - len;
 	
 	// make sure there is enough room for new characters and null terminator
 	if (s_data->alloc <= new_length + 1) {
@@ -165,7 +165,7 @@ void STRING_REPLACE(string* s, size_t pos, size_t len, const char* str) {
 	*s = s_data->buff;
 }
 
-void STRING_REMOVE(string s, size_t pos, size_t len) {
+void STRING_REMOVE(string s, str_size pos, str_size len) {
 	string_data* s_data = STRING_DATA(s);
 	// anyone who puts in a bad index can face the consequences on their own
 	memmove(&s_data->buff[pos], &s_data->buff[pos+len], s_data->length - pos);
@@ -177,10 +177,10 @@ void STRING_FREE(string s) {
 	free(STRING_DATA(s));
 }
 
-size_t STRING_SIZE(string s) {
-	return ((size_t*)s)[-1];
+str_size STRING_SIZE(string s) {
+	return ((str_size*)s)[-1];
 }
 
-size_t STRING_GET_ALLOC(string s) {
-	return ((size_t*)s)[-2];
+str_size STRING_GET_ALLOC(string s) {
+	return ((str_size*)s)[-2];
 }
