@@ -9,12 +9,10 @@
 #define str_h
 
 #include <stdlib.h>
-
-#define bool int
-#define true 1
-#define false 0
+#include <stdbool.h>
 
 typedef char* string;
+typedef size_t str_size;
 
 string STRING_CREATE(const char* str);
 
@@ -30,8 +28,8 @@ void STRING_REMOVE(string s, size_t pos, size_t len); // removing elements does 
 
 void STRING_FREE(string s);
 
-size_t STRING_SIZE(string s);
+str_size STRING_SIZE(string s);
 
-size_t STRING_GET_ALLOC(string s);
+str_size STRING_GET_ALLOC(string s);
 
 #endif /* str_h */
