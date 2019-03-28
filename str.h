@@ -12,7 +12,7 @@
 #include <stdbool.h>
 
 typedef char* string;
-typedef size_t str_size;
+typedef unsigned char str_size;
 
 string STRING_CREATE(const char* str);
 
