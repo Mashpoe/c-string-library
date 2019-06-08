@@ -11,6 +11,7 @@
 #include <stdbool.h>
 
 typedef char* string;
+typedef size_t str_size;
 
 string string_create(const char* str);
 
@@ -18,16 +19,16 @@ void string_add_char(string* s, char c);
 
 void string_add(string* s, const char* str);
 
-void string_insert(string* s, size_t pos, const char* str);
+void string_insert(string* s, str_size pos, const char* str);
 
-void string_replace(string* s, size_t pos, size_t len, const char* str);
+void string_replace(string* s, str_size pos, str_size len, const char* str);
 
-void string_remove(string s, size_t pos, size_t len); // removing elements does not require reallocation
+void string_remove(string s, str_size pos, str_size len); // removing elements does not require reallocation
 
 void string_free(string s);
 
-size_t string_size(string s);
+str_size string_size(string s);
 
-size_t string_get_alloc(string s);
+str_size string_get_alloc(string s);
 
 #endif /* str_h */
