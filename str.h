@@ -2,7 +2,6 @@
 //  str.h
 //
 //  Created by Mashpoe on 2/28/19.
-//  Copyright © 2019 Mashpoe. All rights reserved.
 //
 
 #ifndef str_h
@@ -12,24 +11,23 @@
 #include <stdbool.h>
 
 typedef char* string;
-typedef unsigned char str_size;
 
-string STRING_CREATE(const char* str);
+string string_create(const char* str);
 
-void STRING_ADD_CHAR(string* s, char c);
+void string_add_char(string* s, char c);
 
-void STRING_ADD(string* s, const char* str);
+void string_add(string* s, const char* str);
 
-void STRING_INSERT(string* s, str_size pos, const char* str);
+void string_insert(string* s, size_t pos, const char* str);
 
-void STRING_REPLACE(string* s, str_size pos, str_size len, const char* str);
+void string_replace(string* s, size_t pos, size_t len, const char* str);
 
-void STRING_REMOVE(string s, str_size pos, str_size len); // removing elements does not require reallocation
+void string_remove(string s, size_t pos, size_t len); // removing elements does not require reallocation
 
-void STRING_FREE(string s);
+void string_free(string s);
 
-str_size STRING_SIZE(string s);
+size_t string_size(string s);
 
-str_size STRING_GET_ALLOC(string s);
+size_t string_get_alloc(string s);
 
 #endif /* str_h */
