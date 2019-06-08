@@ -33,33 +33,33 @@ Similarly to SDS strings, this is achieved by using an alternative design, in wh
 
 This library's strings are the same type as a regular c string, `char*`, but this library defines `string` as an alias, which should be used for every string associated with this library to avoid confusion.
 
-You can create a string by calling `STRING_CREATE` like so:
+You can create a string by calling `string_create` like so:
 
 ```c
-string s = STRING_CREATE("Hello world!");
+string s = string_create("Hello world!");
 ```
 or
 
 ```c
-string s = STRING_CREATE(NULL); // will create an empty string
+string s = string_create(NULL); // will create an empty string
 ```
 
-This library includes a variety functions such as `STRING_ADD`, `STRING_INSERT`, and `STRING_REPLACE`, most of which take a `string*` (which is the same as a `char**`) as an argument:
+This library includes a variety functions such as `string_add`, `string_insert`, and `string_replace`, most of which take a `string*` (which is the same as a `char**`) as an argument:
 
 ```c
-STRING_INSERT(&s, 2, "hello");
+string_insert(&s, 2, "hello");
 ```
 
 Some functions never have to move the string to a new location, so they just take a regular `string` (or a `char*`) as an argument:
 
 ```c
-STRING_REMOVE(s, 2, 3);
+string_remove(s, 2, 3);
 ```
 
 or
 
 ```c
-int size = STRING_SIZE(s);
+int size = string_size(s);
 ```
 
 # Differences
@@ -73,7 +73,7 @@ s = sdscat(s,"Some more data");
 In order to make these function calls look better, this library's function calls work like this:
 
 ```c
-STRING_ADD(&s, "Some more data");
+string_add(&s, "Some more data");
 ```
 
 The second main difference is memory usage and speed. SDS uses less memory in it's headers, but each time it's functions are called, flags have to be read from part of the header to determine the rest of it's size, which is slightly less efficient.
