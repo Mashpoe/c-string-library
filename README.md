@@ -79,3 +79,5 @@ string_add(&s, "Some more data");
 The second main difference is memory usage and speed. SDS uses less memory in it's headers, but each time it's functions are called, flags have to be read from part of the header to determine the rest of it's size, which is slightly less efficient.
 
 If memory usage is your main concern and you want to store a variety of very small and extremely large strings, SDS is probably the best choice. This library is definitley a good choice if you are planning on storing very large objects or files. If you want this library's slight advantage in efficiency and also want to store a large amount of small strings, consider replacing the header's members with a smaller data type such as `unsigned char` or even `int`.
+
+This can be done by changing the line at the top of `str.h` from `typedef size_t str_size;` to `typedef unsigned char str_size;`, for example.
