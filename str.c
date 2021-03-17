@@ -72,13 +72,14 @@ void string_add(string* s, const char* str) {
 	// make sure there is enough room for new characters and null terminator
 	if (s_data->alloc <= new_length + 1) {
 		s_data = realloc(s_data, sizeof(string_data) + new_length);
-		s_data->length = new_length;
 		s_data->alloc = new_length + 1;
 	}
 	
 	// copy str chars
-	memcpy(&s_data->buff[s_data->length-1], str, str_length);
-	
+	memcpy(&s_data->buff[s_data->length], str, str_length);
+
+	s_data->length = new_length;
+
 	s_data->buff[new_length] = '\0'; // add new null terminator
 	
 	*s = s_data->buff;
